@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
+  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>MolVision</title>
+  <link rel="icon" type="image/x-icon" href="static/images/mainlogo.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+  <script src="static/js/leaderboard.js"></script>
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">MolVision: Molecular Property Prediction with Vision Language Models</h1>
+            <!-- <div class="is-size-5 publication-authors"> -->
+              <!-- Paper authors -->
+              <!-- <span class="author-block">
+                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
+                <span class="author-block">
+                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
+                  <span class="author-block">
+                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a><sup>*</sup>
+                  </span>
+                  </div> -->
+
+                  <!-- <div class="is-size-5 publication-authors">
+                    <span class="author-block">Institution Name<br>Conferance name and year</span>
+                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                  </div> -->
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- Arxiv PDF link -->
+                      <!-- <span class="link-block">
+                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span> -->
+
+                    <!-- Supplementary PDF link
+                    <span class="link-block">
+                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Supplementary</span>
+                    </a>
+                  </span> -->
+                  <span class="link-block">
+                    <a href="https://github.com/molvision/MolVision" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                  <!-- Github link -->
+                  <span class="link-block">
+                    <a href="https://huggingface.co/molvision" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M448 80l0 48c0 44.2-100.3 80-224 80S0 172.2 0 128L0 80C0 35.8 100.3 0 224 0S448 35.8 448 80zM393.2 214.7c20.8-7.4 39.9-16.9 54.8-28.6L448 288c0 44.2-100.3 80-224 80S0 332.2 0 288L0 186.1c14.9 11.8 34 21.2 54.8 28.6C99.7 230.7 159.5 240 224 240s124.3-9.3 169.2-25.3zM0 346.1c14.9 11.8 34 21.2 54.8 28.6C99.7 390.7 159.5 400 224 400s124.3-9.3 169.2-25.3c20.8-7.4 39.9-16.9 54.8-28.6l0 85.9c0 44.2-100.3 80-224 80S0 476.2 0 432l0-85.9z"/></svg>
+                    </span>
+                    <span>Dataset</span>
+                  </a>
+                </span>
+
+                <!-- ArXiv abstract Link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h1 class = "maintitle">What is MolVision?</h1>
+      <img class = "main-logo" src="static/images/mainlogo.png" alt="MY ALT TEXT"/>
+      <h2 class="subtitle has-text-centered">
+      MolVision is a novel benchmark designed to study property prediction in molecules, integrating skeletal structure images with SMILES representations. It evaluates the performance of Vision-Language Models (VLMs) in predicting molecular properties across diverse datasets through zero-shot, few-shot, chain-of-thought and fine-tuning scenarios. 
+      </h2>
+      <img src="static/images/TraditionalMethods-1.png" alt="MY ALT TEXT"/>
+    </div>
+  </div>
+</section>
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Introduction</h2>
+        <div class="content has-text-justified">
+          <p>
+            Molecular property prediction is a fundamental task in computational chemistry with critical applications in drug discovery and materials science. While recent works have explored Large Language Models (LLMs) for this task, they primarily rely on textual molecular representations such as SMILES/SELFIES, which can be ambiguous and structurally less informative. In this work, we introduce MolVision, a novel approach that leverages Vision-Language Models (VLMs) by integrating both molecular structure as images and textual descriptions to enhance property prediction. We construct a benchmark spanning ten diverse datasets, covering classification, regression and description tasks. Evaluating nine different VLMs in zero-shot, few-shot, and fine-tuned settings, we find that visual information improves prediction performance, particularly when combined with efficient fine-tuning strategies such as LoRA. Our results reveal that while visual information alone is insufficient, multimodal fusion significantly enhances generalization across molecular properties. Adaptation of vision encoder for molecular images in conjunction with LoRA further improves the performance.   
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="leaderboard-carousel">
+  <div class="carousel-controls">
+    <button class="nav-btn" id="prev-btn">←</button>
+    
+    <div class="category-tabs">
+      <button class="tab-btn active" data-category="classification">Classification</button>
+      <button class="tab-btn" data-category="regression">Regression</button>
+      <button class="tab-btn" data-category="description">Description</button>
+    </div>
+    
+    <button class="nav-btn" id="next-btn">→</button>
+  </div>
+  
+  <div class="container">
+    <h2 id="table-title"></h2>
+    <div class="table-container">
+      <table id="leaderboard">
+        <thead id="table-head"></thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-sixths">
+        <h2 class="title is-3">Molvision -- Charateristic and Statistics</h2>
+        <!-- <h2 class="title is-3">BLINK Benchmark -- Unique Features of BLINK?</h2> -->
+        <h2 class="content has-text-justified">
+          <div class="characteristics">
+            <h2>Characteristics of MolVision</h2>
+            <ol>
+                <li><strong>Multimodal Integration:</strong> MolVision combines skeletal structure images with SMILES representations for molecular property prediction.</li>
+                <li><strong>Diverse Datasets:</strong> It includes Ten datasets covering various molecular properties and complexities.</li>
+                <li><strong>Evaluation Scenarios:</strong> Assessing Vision-Language Models (VLMs) under zero-shot, few-shot, Chain-of-Thought and fine-tuning conditions.</li>
+                <li><strong>Comparative Analysis:</strong> Benchmarking Two closed source and Seven Opensourced different VLMs to analyze their effectiveness in computational chemistry.</li>
+            </ol>
+        </div>
+    
+        <div class="statistics">
+            <h2>Statistics of MolVision</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Number of Datasets</td>
+                        <td>10 datasets, BACE-V, BBBP-V, HIV-V, Clintox-V,Clintox-V, Tox21-V, Esol-V, LD50-V, QM9-V, PCQM4Mv2-V, Chebi-V</td>
+                    </tr>
+                    <tr>
+                        <td>Dataset Composition</td>
+                        <td>Includes skeletal structure images and corresponding SMILES strings</td>
+                    </tr>
+                    <tr>
+                        <td>Model Evaluation</td>
+                        <td>Two Closed Source and Seven OpenSourced Vision-Language Models evaluated</td>
+                    </tr>
+                    <tr>
+                        <td>Performance Metrics</td>
+                        <td>Measured across zero-shot, few-shot, Chain-of-thought and fine-tuning scenarios</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </h2>
+        <img src="static/images/architecture-main-1.png" height="100%">
+        <h2 class="content has-text-centered">
+          <b>Overview of prompt used for VLMs</b>: We show template prompt used for property prediction,
+          including general outline, task instruction, in-context learning (ICL) examples (k=2), and an image
+          prompt. The prompt guides the prediction of properties based on SMILES and visual representations.
+        </h2>
+       
+       <div class="myrow">
+  <div class="mycolumn">
+    <img src="static/images/Radar-Plot-Teaser.svg" alt="Plot 1" />
+  </div>
+  <div class="mycolumn">
+    <img src="static/images/Radar-plot-regression-Teaser.svg" alt="Plot 2" />
+  </div>
+  <div class="mycolumn">
+    <img src="static/images/Radar-Plot-Janus-Teaser.svg" alt="Plot 3" />
+  </div>
+</div>
+
+        <h2 class="content has-text-justified">
+        
+          <ul>
+            <li><b>MolVision overview:</b> Average performance comparison of models in zero-shot (ZS), in-context (ICL), chain-of-thoughts (CoT), and finetuning (FT) for classification (Left ↑) and regression tasks (Center ↓). (Right:) Impact of using visual information on model performance (↑) (JanusPro).</li>
+          </ul>
+          </h2>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Paper abstract -->
+
+<!-- Image carousel -->
+<section class="section hero is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="Result title is-3">Qualitative Result Example</h2>
+      <div id="results-row" class="results-row">
+        <div class="item">
+          <img src="static/images/ClintoxPromptexample.png" alt="First image description"/>
+          <h2 class="subtitle has-text-centered">
+          A prompt example and its prediction result for Clintox-V Dataset. 
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/HIVPromptexample.png" alt="Second image description"/>
+          <h2 class="subtitle has-text-centered">
+          A prompt example and its prediction result for HIV-V Dataset. 
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/Tox21Promptexample.png" alt="Third image description"/>
+          <h2 class="subtitle has-text-centered">
+          A prompt example and its prediction result for Tox21-V Dataset. 
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- End image carousel -->
+
+
+
+<!-- Youtube video -->
+ <!--
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+   
+      <h2 class="title is-3">Video Presentation</h2>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          
+          <div class="publication-video">
+            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ -->
+
+<!-- End youtube video -->
+
+
+<!-- Video carousel -->
+<!--
+-->
+<!-- <section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Another Carousel</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-video1">
+          <video poster="" id="video1" autoplay controls muted loop height="100%">
+          
+            <source src="static/videos/carousel1.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video2">
+          <video poster="" id="video2" autoplay controls muted loop height="100%">
+
+            <source src="static/videos/carousel2.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video3">
+          <video poster="" id="video3" autoplay controls muted loop height="100%">\
+  
+            <source src="static/videos/carousel3.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!-- End video carousel -->
+
+
+
+
+
+
+<!-- Paper poster -->
+<!-- <section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title">Poster</h2>
+
+      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
+          </iframe>
+        
+      </div>
+    </div>
+  </section> -->
+<!--End paper poster -->
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>BibTex Code Here</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
