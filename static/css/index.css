@@ -7,10 +7,14 @@ body {
     font-size: 25px;
     color: #000;
 }
+.link-block {
+    color: white !important;
+}
 
 .link-block a {
     margin-top: 5px;
     margin-bottom: 5px;
+    color: white;
 }
 
 .dnerf {
