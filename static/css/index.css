@@ -2,7 +2,13 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
+.publication-links .button {
+  color: white !important;
+}
 
+.publication-links .button span {
+  color: white !important;
+}
 .footer .icon-link {
     font-size: 25px;
     color: #000;
