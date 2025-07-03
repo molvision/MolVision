@@ -4,8 +4,12 @@ A Python tool for running various vision language model inference on chemical da
 
 ## 🔗 Related Links
 
-- **Project Website**: [ChemVision](https://chemvision.github.io/chemvision/)
-- **HuggingFace Organization**: [ChemVision on HuggingFace](https://huggingface.co/ChemVision)
+<a href="https://chemvision.github.io/chemvision/" target="_blank" rel="noopener noreferrer">
+  <img src="https://img.shields.io/badge/Project_Page-ChemVision-green" alt="Project Page">
+</a>
+<a href="https://huggingface.co/ChemVision" target="_blank" rel="noopener noreferrer">
+  <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-ChemVision-blue" alt="HuggingFace Organization">
+</a>
 
 
 ## 📋 Introduction
@@ -119,3 +123,5 @@ The tool automatically detects and handles:
 - PNG/JPG molecular images
 - Various column naming conventions for questions/prompts
 
+## 📊 Datasets
+Additional datasets will be released on request. Please contact us for access to specific chemical datasets or to request new dataset releases.
