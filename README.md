@@ -1,4 +1,4 @@
-# ChemVision Inference Tool
+# MolVision Inference Tool
 
 A Python tool for running various vision language model inference on chemical datasets from HuggingFace, specifically designed for molecular image analysis and chemical property prediction tasks.
 
@@ -55,8 +55,8 @@ This tool enables automated inference using OpenAI's GPT-4 vision models on chem
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/chemvision/chemvision.git
-   cd chemvision
+   git clone https://github.com/molvision/molvision.git
+   cd molvision
    ```
 
 2. **Create and activate virtual environment with uv**:
@@ -79,7 +79,7 @@ This tool enables automated inference using OpenAI's GPT-4 vision models on chem
 
 ### Basic Usage
 
-Run inference on the default ChemVision dataset:
+Run inference on the default Molvision dataset:
 
 ```bash
 python main.py
@@ -89,7 +89,7 @@ python main.py
 
 ```bash
 python main.py \
-    --dataset "ChemVision/BACE-V-SMILES-2" \
+    --dataset "MolVision/BACE-V-SMILES-2" \
     --split "train" \
     --model "gpt-4o" \
     --output "results.csv" \

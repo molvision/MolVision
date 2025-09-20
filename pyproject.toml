@@ -1,5 +1,5 @@
 [project]
-name = "chemvision"
+name = "molvision"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
