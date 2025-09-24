@@ -129,13 +129,12 @@ Additional datasets will be released on request. Please contact us for access to
 ## 📖 Citation
 If you use this work in your research, please cite:
 ```
-@misc{adak2025molvisionmolecularpropertyprediction,
-      title={MolVision: Molecular Property Prediction with Vision Language Models}, 
-      author={Deepan Adak and Yogesh Singh Rawat and Shruti Vyas},
-      year={2025},
-      eprint={2507.03283},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2507.03283}, 
+@inproceedings{
+adak2025molvision,
+title={MolVision: Molecular Property Prediction with Vision Language Models},
+author={Deepan Adak and Yogesh S Rawat and Shruti Vyas},
+booktitle={The Thirty-ninth Annual Conference on Neural Information Processing Systems Datasets and Benchmarks Track},
+year={2025},
+url={https://openreview.net/forum?id=6vI3OOYddm}
 }
 ```
