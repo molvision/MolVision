@@ -142,7 +142,7 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Run GPT inference on HuggingFace dataset')
     
-    parser.add_argument('--dataset', type=str, default='ChemVision/BACE-V-SMILES-2',
+    parser.add_argument('--dataset', type=str, default='MolVision/BACE-V-SMILES-2',
                         help='HuggingFace dataset name')
     parser.add_argument('--split', type=str, default='train',
                         help='Dataset split to use')
