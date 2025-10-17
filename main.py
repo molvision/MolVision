@@ -3,65 +3,24 @@ import os
 import argparse
 import pandas as pd
 from tqdm import tqdm
-from huggingface_hub import hf_hub_download, list_repo_files
-from models.gpt import GPTInferencer
+from datasets import load_dataset
+from models.model_config import ModelConfig
 
 def main(args):
     # Create a directory for downloaded files
     download_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "downloaded_data")
     os.makedirs(download_dir, exist_ok=True)
     
-    # First, list all files in the repository to understand the structure
+    # Load dataset from HuggingFace
     try:
-        print(f"Listing files in repository: {args.dataset}")
-        all_files = list_repo_files(repo_id=args.dataset, repo_type="dataset")
-        
-        # Filter for metadata and image files
-        metadata_files = [f for f in all_files if f.endswith('.csv') or f.endswith('.jsonl')]
-        image_files = [f for f in all_files if f.endswith('.png') or f.endswith('.jpg') or f.endswith('.jpeg')]
-        
-        print(f"Found {len(metadata_files)} metadata files and {len(image_files)} image files")
-        
-        # Find the most likely metadata file
-        metadata_file_path = None
-        for pattern in [f"{args.split}/metadata.csv", "metadata.csv", f"{args.split}.csv"]:
-            if pattern in metadata_files:
-                metadata_file_path = pattern
-                break
-        
-        if not metadata_file_path and metadata_files:
-            # Just use the first metadata file
-            metadata_file_path = metadata_files[0]
-        
-        if not metadata_file_path:
-            raise ValueError("No metadata file found in repository")
-            
-        print(f"Using metadata file: {metadata_file_path}")
-        
-        # Download the metadata file
-        metadata_file = hf_hub_download(
-            repo_id=args.dataset,
-            filename=metadata_file_path,
-            repo_type="dataset",
-            local_dir=download_dir
-        )
-        
-        # Read the metadata
-        if metadata_file_path.endswith('.csv'):
-            dataset = pd.read_csv(metadata_file)
-        else:  # jsonl
-            import json
-            data = []
-            with open(metadata_file, 'r') as f:
-                for line in f:
-                    if line.strip():
-                        data.append(json.loads(line))
-            dataset = pd.DataFrame(data)
-            
-        print(f"Successfully loaded {len(dataset)} samples from metadata")
+        print(f"Loading dataset: {args.dataset}, split: {args.split}")
+        hf_dataset = load_dataset(args.dataset, split=args.split)
+        dataset = hf_dataset.to_pandas()
+        print(f"Successfully loaded {len(dataset)} samples from dataset")
+        print(f"Columns: {list(dataset.columns)}")
         
     except Exception as e:
-        print(f"Error accessing repository: {e}")
+        print(f"Error loading dataset: {e}")
         return
     
     # Limit the number of samples if specified
@@ -69,15 +28,13 @@ def main(args):
         dataset = dataset.head(args.num_samples)
         print(f"\nLimited to {len(dataset)} samples")
     
-    # Initialize GPT inferencer
-    gpt = GPTInferencer()
+    # Initialize model inferencer using ModelConfig
+    print(f"Initializing {args.model} model...")
+    inferencer, model_param = ModelConfig.get_model_inferencer(args.model)
+    print(f"Model initialized successfully")
     
     # Prepare results list
     results = []
-    
-    # Create a directory for downloaded images
-    image_dir = os.path.join(download_dir, "images")
-    os.makedirs(image_dir, exist_ok=True)
     
     # Process each sample in the dataset
     for idx, row in tqdm(dataset.iterrows(), total=len(dataset), desc="Processing samples"):
@@ -93,36 +50,26 @@ def main(args):
                 print(f"Warning: Sample {idx} has no usable question/prompt field")
                 question = "No prompt available for this sample"
             
-            # Handle image - ALWAYS use forward slashes for HF Hub paths
-            image_file = f"train/images/molecule_{idx}.png"
-            
-            # Download the image
-            try:
-                print(f"Downloading image: {image_file}")
-                image_path = hf_hub_download(
-                    repo_id=args.dataset,
-                    filename=image_file,
-                    repo_type="dataset",
-                    local_dir=image_dir
-                )
-                print(f"Downloaded image to: {image_path}")
-                image = image_path
-                
-            except Exception as img_e:
-                print(f"Error downloading image {image_file}: {img_e}")
-                print("Continuing with text-only inference")
-                image = None
+            # Handle image if present in dataset
+            image = None
+            for field in ['image', 'Image', 'images']:
+                if field in dataset.columns and not pd.isna(row[field]):
+                    image = row[field]
+                    break
             
             # Run inference
-            result = gpt.infer(question, image=image, model=args.model)
+            if model_param:
+                result = inferencer.infer(question, image=image, model=model_param)
+            else:
+                result = inferencer.infer(question, image=image)
             
             # Store results
             result_entry = {
                 'sample_id': idx,
                 'question': question,
-                'image_path': image if image else None,
                 'has_image': image is not None,
-                'gpt_response': result
+                'model': args.model,
+                'response': result
             }
             
             results.append(result_entry)
@@ -140,14 +87,15 @@ def main(args):
     print(f"Results saved to {args.output}")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Run GPT inference on HuggingFace dataset')
+    parser = argparse.ArgumentParser(description='Run model inference on HuggingFace dataset')
     
-    parser.add_argument('--dataset', type=str, default='MolVision/BACE-V-SMILES-2',
+    parser.add_argument('--dataset', type=str, default='molvision/BACE-V-SMILES-4',
                         help='HuggingFace dataset name')
     parser.add_argument('--split', type=str, default='train',
                         help='Dataset split to use')
     parser.add_argument('--model', type=str, default='gpt-4o',
-                        help='GPT model to use (gpt-4o or gpt-4v)')
+                        choices=ModelConfig.get_available_models(),
+                        help='Model to use for inference')
     parser.add_argument('--output', type=str, default='results.csv',
                         help='Output CSV file path')
     parser.add_argument('--num_samples', type=int, default=10,
