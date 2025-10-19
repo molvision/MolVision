@@ -70,23 +70,16 @@ def main():
     
     # Load CSV
     df = pd.read_csv(args.input)
+    print('DataFrame loaded:')
+    print(df.head())
     
-    # Extract predictions
+    # Extract and normalize predictions
     df['extracted_prediction'] = df[args.prediction_column].apply(extract_boolean_answer)
-    
-    # Normalize labels
     df['normalized_ground_truth'] = df[args.ground_truth_column].apply(normalize_label)
     df['normalized_prediction'] = df['extracted_prediction'].apply(normalize_label)
     
-    # Filter valid predictions
-    valid_df = df[df['normalized_prediction'].notna() & df['normalized_ground_truth'].notna()]
-    
-    if len(valid_df) == 0:
-        print("ERROR: No valid predictions found!")
-        return
-    
-    y_true = valid_df['normalized_ground_truth'].values
-    y_pred = valid_df['normalized_prediction'].values
+    y_true = df['normalized_ground_truth'].values
+    y_pred = df['normalized_prediction'].values
     
     # Calculate metrics
     accuracy = accuracy_score(y_true, y_pred)
@@ -94,8 +87,6 @@ def main():
     
     # Print results
     print(f"\nTotal Samples: {len(df)}")
-    print(f"Valid Predictions: {len(valid_df)}")
-    print(f"Failed Extractions: {len(df) - len(valid_df)}")
     print(f"\nAccuracy: {accuracy:.4f} ({accuracy*100:.2f}%)")
     print(f"F1-Score: {f1:.4f}")
 
