@@ -33,10 +33,13 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model.to(device)
 
 embeddings_list = []
-root ='/content/'
+root = '/content/'
+
+# Create Results folder if it doesn't exist
+results_folder = os.path.join(root, 'Results')
+os.makedirs(results_folder, exist_ok=True)
+
 for index, row in df.iterrows():
-    if index ==1:
-      break
     image = row['image']  
     query = row['Question']
 
@@ -62,5 +65,4 @@ for index, row in df.iterrows():
         df.at[index, 'predictions'] = decoded_response
 
 # Save the predictions to a CSV file
-df.to_csv(root +'Results/Qwen_new.csv', index=False)
-
+df.to_csv(os.path.join(results_folder, 'Qwen_new.csv'), index=False)
